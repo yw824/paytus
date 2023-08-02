@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.841a700b.css",
+    "main.js": "/static/js/main.c4f32d82.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/paytus_noback.png": "/static/media/paytus_noback.ff9839da0287b762fd5f.png",
+    "index.html": "/index.html",
+    "main.841a700b.css.map": "/static/css/main.841a700b.css.map",
+    "main.c4f32d82.js.map": "/static/js/main.c4f32d82.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.841a700b.css",
+    "static/js/main.c4f32d82.js"
+  ]
+}
