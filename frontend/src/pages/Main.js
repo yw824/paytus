@@ -1,26 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Intro from '../components/Intro';
+import Charts from '../components/Charts';
+import Services from '../components/Services'
+
+import Back1 from '../assets/main_back1.jpg'
 
 const Main = () => {
+    const [order, setOrder] = useState(0);
 
-    const [main, setMain] = useState('')
-    useEffect(() => {
-        axios.get('/api/main')
-        .then(response => setMain(response.data))
-        .catch(error => console.log(error))
-    }, []);
-
+    const handleNav = () => {
+        setOrder((order + 1) % 3);
+    };
     return (
         <div>
             <Navbar />
-            <div className='flex items-center h-24 max-w-[1240px] mx-auto text-white'>
-                <h1 className='w-full text-3xl font-bold text-[#F15D3C] m-4'>Main Page</h1>
-                <br /><hr /> <br />
-                <h2 className='w-full text-xl font-bold text-black m-4'>from backend : {main}</h2>
-            </div>
+            <Intro img={Back1} title='편리한 전자결제 페이투스' text1='고객의 환경에 적합한 다양한 결제환경과' text2 = '안전한 결제수단을 제공합니다.' />
+            <Charts />
+            <Services />
             <Footer />
         </div>
     );
