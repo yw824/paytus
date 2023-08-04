@@ -3,7 +3,9 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/board_crud?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root  # -> 앞서 입력했던 MySQL username 입력
-    password: 111111  # -> 앞서 설정했던 MySQL 비밀번호 입력
+
+    password:   # -> 앞서 설정했던 MySQL 비밀번호 입력
+
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-circular-references: true

@@ -6,7 +6,7 @@ HELP.md
 !**/src/test/**/build/
 
 ### STS ###
-application-private.yml
+src/main//resources/application-private.yml
 .apt_generated
 .classpath
 .factorypath
