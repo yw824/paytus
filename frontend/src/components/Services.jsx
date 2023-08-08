@@ -1,5 +1,9 @@
 import React from 'react';
 
+import Intro_Complimentary from '../components/Intro_Complimentary'
+import Intro_Escrow from './Intro_Escrow';
+import Intro_CashReceipts from '../components/Intro_CashReceipts'
+
 import Card from '../assets/1_card.gif'
 import Transfer from '../assets/2_transfer.gif'
 import Account from '../assets/3_account.gif'
@@ -37,6 +41,10 @@ const Services = () => {
                     </div>
                 </div>
             </div>
+            <h4 className='invisible'>_</h4>
+            <Intro_Complimentary />
+            <Intro_Escrow />
+            <Intro_CashReceipts />
         </div>
     );
 };
