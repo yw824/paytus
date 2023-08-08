@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class GetAlltAdmin {
+public class GetAllAdmin {
 
     @Autowired
     AdminService service;

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface AdminMapper extends MyMapper<Integer, AdminDTO> {
+public interface AdminMapper extends MyMapper<String, AdminDTO> {
 
 }

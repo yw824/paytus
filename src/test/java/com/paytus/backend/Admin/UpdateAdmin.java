@@ -15,7 +15,7 @@ public class UpdateAdmin {
     @Test
     void contextLoads() throws Exception {
 
-            AdminDTO admin = new AdminDTO("a3", "a3", "a", "a", "a", "a");
+            AdminDTO admin = new AdminDTO("admin04", "aaa", "a", "a", "a", "a");
             service.modify(admin);
             System.out.println("ok");
     }

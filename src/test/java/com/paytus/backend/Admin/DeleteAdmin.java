@@ -15,7 +15,7 @@ public class DeleteAdmin {
     @Test
     void contextLoads() throws Exception {
 
-            service.remove(2);
+            service.remove("admin04");
             System.out.println("ok");
 
     }

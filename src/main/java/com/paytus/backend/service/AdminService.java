@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminService implements MyService<Integer, AdminDTO> {
+public class AdminService implements MyService<String, AdminDTO> {
 
     @Autowired
     AdminMapper mapper;
@@ -21,8 +21,8 @@ public class AdminService implements MyService<Integer, AdminDTO> {
     }
 
     @Override
-    public void remove(Integer integer) throws Exception {
-        mapper.delete(integer);
+    public void remove(String string) throws Exception {
+        mapper.delete(string);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class AdminService implements MyService<Integer, AdminDTO> {
     }
 
     @Override
-    public AdminDTO get(Integer integer) throws Exception {
-        return mapper.select(integer);
+    public AdminDTO get(String string) throws Exception {
+        return mapper.select(string);
     }
 
     @Override

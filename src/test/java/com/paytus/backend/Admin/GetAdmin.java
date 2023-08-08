@@ -16,7 +16,7 @@ public class GetAdmin {
     void contextLoads() throws Exception {
 
             AdminDTO admin = null;
-            admin = service.get(2);
+            admin = service.get("admin02");
             System.out.println("ok");
             System.out.println(admin);
 
