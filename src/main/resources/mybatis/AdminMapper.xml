@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paytus.backend.mapper.AdminMapper">
+
+    <select id="select" parameterType="Integer" resultType="AdminDTO">
+        SELECT * FROM admin WHERE adminseq=#{adminseq}
+    </select>
+
+    <select id="selectAll" resultType="AdminDTO">
+        SELECT * FROM admin
+    </select>
+
+    <insert id="insert" parameterType="Integer">
+        INSERT INTO admin VALUES (NULL, #{adminpw}, #{adminname}, #{admincall}, #{adminemail}, #{adminpart})
+    </insert>
+
+    <update id="update" parameterType="Integer">
+        UPDATE admin SET adminid=#{adminid}, adminpw=#{adminpw}, adminname=#{adminname}, admincall=#{adminmail}, adminpart=#{adminpart} WHERE adminseq=#{adminseq}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM admin WHERE adminseq=#{adminseq}
+    </delete>
+
+</mapper>
