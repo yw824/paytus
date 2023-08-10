@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import LOGO from '../assets/paytus_noback.png'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -13,8 +14,8 @@ const Navbar = () => {
         <div className='bg-white bg-local flex justify-between items-start h-24 max-w-[1240px] mx-auto text-black'>
             <img className='w-[10rem] md:flex' src={LOGO} alt='Paytus '/>
             <ul className='hidden md:flex'>
-                <li className='p-6 text-xl text-bold'>Home1</li>
-                <li className='p-6 text-xl text-bold'>Payments</li>
+                <li className='p-6 text-xl text-bold'><Link to="/">Home1</Link></li>
+                <li className='p-6 text-xl text-bold'><Link to="/payments">Payments</Link></li>
                 <li className='p-6 text-xl text-bold'>Complimentary</li>
                 <li className='p-6 text-xl text-bold'>Notice</li>
                 <li className='p-6 text-xl text-bold'>FAQ</li>
