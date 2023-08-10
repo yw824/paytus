@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaTwitterSquare,
 } from 'react-icons/fa';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
                     <h6 className='font-medium text-2xl text-white border-b border-white'>Services</h6>
                     <br></br>
                     <ul>
-                        <li className='py-2 text-2xl '>전자 결제 서비스</li>
+                        <li className='py-2 text-2xl '><Link to="/payments">전자 결제 서비스</Link></li>
                         <li className='py-2 text-2xl '>부가 서비스</li>
                         <li className='py-2 text-2xl '>공지사항 / 자료실</li>
                         <li className='py-2 text-2xl '>FAQ Form</li>
