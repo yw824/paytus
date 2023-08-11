@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paytus.backend.mapper.FaqMapper">
+
+    <select id="select" parameterType="Integer" resultType="FaqDTO">
+        SELECT * FROM faq WHERE faqseq=#{faqseq}
+    </select>
+
+    <select id="selectAll" resultType="FaqDTO">
+        SELECT * FROM faq
+    </select>
+
+    <insert id="insert" parameterType="FaqDTO">
+        INSERT INTO faq VALUES (null, #{adminid}, #{faqarea}, #{faqcorp}, #{faqname}, #{faqcall}, #{faqemail}, #{faqtext}, sysdate(), #{faqterm}, #{faqisnew}, #{faqisans}, #{faqanstext}, sysdate())
+    </insert>
+
+    <update id="update" parameterType="FaqDTO">
+        UPDATE faq SET adminid= #{adminid}, faqarea=#{faqarea},faqcorp=#{faqcorp}, faqname=#{faqname}, faqcall=#{faqcall}, faqemail=#{faqemail}, faqtext=#{faqtext}, faqterm=#{faqterm}, faqisnew=#{faqisnew}, faqisans=#{faqisans}, faqanstext=#{faqanstext} WHERE faqseq=#{faqseq}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM faq WHERE faqseq=#{faqseq}
+    </delete>
+
+</mapper>
