@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paytus.backend.mapper.DataMapper">
+
+    <select id="select" parameterType="Integer" resultType="DataDTO">
+        SELECT * FROM data WHERE dataseq=#{dataseq}
+    </select>
+
+    <select id="selectAll" resultType="DataDTO">
+        SELECT * FROM data
+    </select>
+
+    <insert id="insert" parameterType="DataDTO">
+        INSERT INTO data VALUES (null, #{adminid}, #{datatitle}, #{datalink}, sysdate())
+    </insert>
+
+    <update id="update" parameterType="DataDTO">
+        UPDATE data SET datatitle=#{datatitle}, datalink=#{datalink} WHERE dataseq=#{dataseq}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM data WHERE dataseq=#{dataseq}
+    </delete>
+
+</mapper>
