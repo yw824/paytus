@@ -2,11 +2,8 @@ package com.paytus.backend.Controller;
 
 import com.paytus.backend.dto.DataDTO;
 import com.paytus.backend.service.DataService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @RestController
