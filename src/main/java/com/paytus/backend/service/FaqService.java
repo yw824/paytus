@@ -22,6 +22,7 @@ public class FaqService implements MyService<Integer, FaqDTO> {
         mapper.insert(faqDTO);
     }
 
+
     @Override
     public void remove(Integer integer) throws Exception {
         mapper.delete(integer);

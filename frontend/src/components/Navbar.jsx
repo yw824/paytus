@@ -18,7 +18,7 @@ const Navbar = () => {
                 <li className='p-6 text-xl text-bold'><Link to="/payments">Payments</Link></li>
                 <li className='p-6 text-xl text-bold'>Complimentary</li>
                 <li className='p-6 text-xl text-bold'>Notice</li>
-                <li className='p-6 text-xl text-bold'>FAQ</li>
+                <li className='p-6 text-xl text-bold'><Link to="/faq">FAQ</Link></li>
             </ul>
             <div onClick={handleNav} className='block md:hidden'>
                 {nav ? <AiOutlineClose className='mr-4 my-4' size={30}/> : <AiOutlineMenu className='mr-4 my-4' size={30} />}
