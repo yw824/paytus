@@ -1,38 +1,60 @@
 package com.paytus.backend.Controller;
 
 import com.paytus.backend.dto.DataDTO;
+import com.paytus.backend.model.response.CommonResult;
+import com.paytus.backend.model.response.ListResult;
+import com.paytus.backend.model.response.SingleResult;
 import com.paytus.backend.service.DataService;
+import com.paytus.backend.service.ResponseService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @RestController
 @RequestMapping("/api/data")
 public class DataController {
     private DataService service;
-    public DataController(DataService service){
+    private final ResponseService responseService;
+    public DataController(DataService service, ResponseService responseService){
         this.service = service;
+        this.responseService = responseService;
     }
     @GetMapping("")
-    public List<DataDTO> getAllData() throws Exception {
-        return service.get();
+    public ListResult<DataDTO> getAllData() throws Exception {
+        return responseService.getListResult(service.get());
     }
     @GetMapping("/{dataseq}")
-    public DataDTO getData(@PathVariable("Dataseq") int dataseq) throws Exception {
-        return service.get(dataseq);
+    public SingleResult<DataDTO> getData(@PathVariable("dataseq") int dataseq) throws Exception {
+        return responseService.getSingleResult(service.get(dataseq));
     }
+
     @PostMapping("")
-    public void registerData(@RequestBody DataDTO dataDTO) throws Exception {
-        service.register(dataDTO);
-        //System.out.println(faqDTO);
+    public SingleResult<DataDTO> registerData(@RequestBody DataDTO dataDTO) throws Exception {
+        if (dataDTO.getDataseq()==0){
+            service.register(dataDTO);
+            return responseService.getSingleResult(dataDTO);
+        }
+        else
+            return responseService.getFailSingleResult();
+
     }
-    // @RequestBody: HTTP 요청의 바디내용을 통째로 자바객체로 변환해서 매핑된 메소드 파라미터로 전달해준다.
     @PutMapping("/{dataseq}")
-    public void modifyFaq(@PathVariable("dataseq") int dataseq, @RequestBody DataDTO dataDTO) throws Exception {
-        dataDTO.setDataseq(dataseq);
-        service.modify(dataDTO);
+    public SingleResult<DataDTO> modifyData(@PathVariable("dataseq") int dataseq, @RequestBody DataDTO dataDTO) throws Exception {
+        if (getData(dataseq).getData()!=null){
+            dataDTO.setDataseq(dataseq);
+            service.modify(dataDTO);
+
+            return responseService.getSingleResult(dataDTO);
+        }
+        else
+            return responseService.getFailSingleResult();
     }
+
     @DeleteMapping("/{dataseq}")
-    public void removeData(@PathVariable("dataseq") int dataseq) throws Exception {
-        service.remove(dataseq);
+    public CommonResult removeData(@PathVariable("dataseq") int dataseq) throws Exception {
+        if (getData(dataseq).getData()!=null){
+            service.remove(dataseq);
+            return responseService.getSuccessResult();
+        }
+        else
+            return responseService.getFailResult();
     }
 }

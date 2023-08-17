@@ -11,7 +11,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
-
 @Api(tags = {"Admin API"})
 @RestController
 @RequestMapping("/api/admin")
