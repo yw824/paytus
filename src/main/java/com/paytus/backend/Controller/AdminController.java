@@ -9,8 +9,6 @@ import com.paytus.backend.service.AdminService;
 import com.paytus.backend.service.ResponseService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

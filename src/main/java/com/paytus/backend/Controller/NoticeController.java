@@ -25,7 +25,7 @@ public class NoticeController {
         return responseService.getListResult(service.get());
     }
     @GetMapping("/{noticeseq}")
-    public SingleResult<NoticeDTO> getNotice(@PathVariable("Noticeseq") int noticeseq) throws Exception {
+    public SingleResult<NoticeDTO> getNotice(@PathVariable("noticeseq") int noticeseq) throws Exception {
         return responseService.getSingleResult(service.get(noticeseq));
     }
     @PostMapping("")

@@ -1,7 +1,6 @@
 package com.paytus.backend.Controller;
 
 import com.paytus.backend.dto.DataDTO;
-import com.paytus.backend.dto.FaqDTO;
 import com.paytus.backend.model.response.CommonResult;
 import com.paytus.backend.model.response.ListResult;
 import com.paytus.backend.model.response.SingleResult;
@@ -23,7 +22,7 @@ public class DataController {
         return responseService.getListResult(service.get());
     }
     @GetMapping("/{dataseq}")
-    public SingleResult<DataDTO> getData(@PathVariable("Dataseq") int dataseq) throws Exception {
+    public SingleResult<DataDTO> getData(@PathVariable("dataseq") int dataseq) throws Exception {
         return responseService.getSingleResult(service.get(dataseq));
     }
 
