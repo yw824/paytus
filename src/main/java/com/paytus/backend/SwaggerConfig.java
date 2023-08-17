@@ -22,9 +22,9 @@ public class SwaggerConfig {
     apiInfo:Swagger UI 로 노출할 정보
     */
 
-    private static final String SERVICE_NAME = "Paytus hompage";
+    private static final String SERVICE_NAME = "Paytus API";
     private static final String API_VERSION = "V1";
-    private static final String API_DESCRIPTION = "Paytus API TEST";
+    private static final String API_DESCRIPTION = "Paytus API 명세서입니다";
     private static final String API_URL = "http://localhost:8082/";
 
     @Bean
