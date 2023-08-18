@@ -10,11 +10,11 @@
         SELECT * FROM admin
     </select>
 
-    <insert id="insert" parameterType="String">
+    <insert id="insert" parameterType="AdminDTO">
         INSERT INTO admin VALUES (#{adminid}, #{adminpw}, #{adminname}, #{admincall}, #{adminemail}, #{adminpart})
     </insert>
 
-    <update id="update" parameterType="String">
+    <update id="update" parameterType="AdminDTO">
         UPDATE admin SET adminpw=#{adminpw}, adminname=#{adminname},admincall=#{admincall}, adminemail=#{adminemail}, adminpart=#{adminpart} WHERE adminid=#{adminid}
     </update>
 
