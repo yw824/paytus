@@ -6,7 +6,7 @@ HELP.md
 !**/src/test/**/build/
 
 ### STS ###
-application.properties
+src/main/resources/*.properties
 .apt_generated
 .classpath
 .factorypath
