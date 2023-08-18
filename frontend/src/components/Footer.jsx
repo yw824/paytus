@@ -22,7 +22,7 @@ const Footer = () => {
                     <ul>
                         <li className='py-2 text-2xl '><Link to="/payments">전자 결제 서비스</Link></li>
                         <li className='py-2 text-2xl '>부가 서비스</li>
-                        <li className='py-2 text-2xl '>공지사항 / 자료실</li>
+                        <li className='py-2 text-2xl '><Link to="/notice">공지사항 / 자료실</Link></li>
                         <li className='py-2 text-2xl '><Link to="/faq">FAQ Form</Link></li>
                     </ul>
                 </div>
