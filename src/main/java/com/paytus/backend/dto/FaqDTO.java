@@ -12,7 +12,6 @@ import java.util.Date;
 public class FaqDTO {
 
     private int faqseq;
-    private String adminid;
     private String faqarea;
     private String faqcorp;
     private String faqname;
@@ -22,9 +21,6 @@ public class FaqDTO {
     private Date faqdate;
     private int faqterm;
     private int faqisnew;
-    private int faqisans;
-    private String faqanstext;
-    private Date faqansdate;
 
 
 

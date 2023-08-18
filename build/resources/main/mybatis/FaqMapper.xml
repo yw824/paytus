@@ -11,11 +11,11 @@
     </select>
 
     <insert id="insert" parameterType="FaqDTO">
-        INSERT INTO faq VALUES (null, #{adminid}, #{faqarea}, #{faqcorp}, #{faqname}, #{faqcall}, #{faqemail}, #{faqtext}, sysdate(), #{faqterm}, #{faqisnew}, #{faqisans}, #{faqanstext}, sysdate())
+        INSERT INTO faq VALUES (null, #{faqarea}, #{faqcorp}, #{faqname}, #{faqcall}, #{faqemail}, #{faqtext}, sysdate(), #{faqterm}, #{faqisnew})
     </insert>
 
     <update id="update" parameterType="FaqDTO">
-        UPDATE faq SET adminid= #{adminid}, faqarea=#{faqarea},faqcorp=#{faqcorp}, faqname=#{faqname}, faqcall=#{faqcall}, faqemail=#{faqemail}, faqtext=#{faqtext}, faqterm=#{faqterm}, faqisnew=#{faqisnew}, faqisans=#{faqisans}, faqanstext=#{faqanstext} WHERE faqseq=#{faqseq}
+        UPDATE faq SET faqarea=#{faqarea},faqcorp=#{faqcorp}, faqname=#{faqname}, faqcall=#{faqcall}, faqemail=#{faqemail}, faqtext=#{faqtext}, faqterm=#{faqterm}, faqisnew=#{faqisnew} WHERE faqseq=#{faqseq}
     </update>
 
     <delete id="delete" parameterType="Integer">
