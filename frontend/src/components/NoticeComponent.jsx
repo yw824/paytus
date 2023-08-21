@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const NoticeComponent = () => {
-    const [notices, setNotices] = useState([])
+    const [notices, setNotices] = useState([]);
 
     useEffect(() => {
         axios.get('/api/notice')
@@ -25,18 +25,20 @@ const NoticeComponent = () => {
                 <p className='font-bold col-5'>등록일</p>
             </div>
             {
-                notices.map(notice => {
+                notices.map((notice, index) => {
                     return (
-                        <div className=
-                                 {(notice.noticeseq - 200 + 1) % 2 != 0
-                                     ? 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 text-center py-3 px-3 font-bold grid-flow-dense'
-                                     : 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 bg-[#BC614B] bg-opacity-70 text-center py-3 px-3 font-bold'
-                                 }
-                             key={notice.noticeseq}>
-                            <p className='col-1'>{notice.noticeseq-200 + 1}</p>
-                            <p className='col-2'>{notice.adminid}</p>
-                            <strong className='col-start-3 col-end-5'>{notice.noticetitle}</strong>
-                            <p className='col-start-5'>{notice.noticedate.slice(0, 10)}</p>
+                        <div>
+                            <div className=
+                                     {(index) % 2 != 0
+                                         ? 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 text-center py-3 px-3 font-bold grid-flow-dense'
+                                         : 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 bg-[#BC614B] bg-opacity-70 text-center py-3 px-3 font-bold'
+                                     }
+                                 key={notice.noticeseq}>
+                                <p className='col-1'>{index}</p>
+                                <p className='col-2'>{notice.adminid}</p>
+                                <strong className='col-start-3 col-end-5'>{notice.noticetitle}</strong>
+                                <p className='col-start-5'>{notice.noticedate.slice(0, 10)}</p>
+                            </div>
                         </div>
                     )})
             }

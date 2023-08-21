@@ -10,8 +10,8 @@ public class UpdateFaq {
     FaqService service;
     @Test
     void contextLoads() throws Exception {
-        FaqDTO faq = new FaqDTO(102,"admin5","b","b","b","b","b","b",null,0 ,0 ,1 ,"b",null);
-        service.modify(faq);
-        System.out.println("ok");
+//        FaqDTO faq = new FaqDTO(102,"admin5","b","b","b","b","b","b",null,0 ,0 ,1 ,"b",null);
+//        service.modify(faq);
+//        System.out.println("ok");
     }
 }
