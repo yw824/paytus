@@ -10,9 +10,9 @@ public class InsertFaq {
     FaqService service;
     @Test
     void contextLoads() throws Exception {
-//        FaqDTO faq = new FaqDTO(0,"admin4","a","a","a","a","a","a",null,1 ,1 ,0 ,"a",null);
-//        service.register(faq);
-//        System.out.println("ok");
-//        System.out.println(faq);
+        FaqDTO faq = new FaqDTO(0,"a","a","a","a","a","a",null,1 ,1);
+        service.register(faq);
+        System.out.println("ok");
+        System.out.println(faq);
     }
 }
