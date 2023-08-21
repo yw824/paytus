@@ -4,6 +4,7 @@ import com.paytus.backend.dto.FaqDTO;
 import com.paytus.backend.model.response.CommonResult;
 import com.paytus.backend.model.response.ListResult;
 import com.paytus.backend.model.response.SingleResult;
+import com.paytus.backend.service.EmailService;
 import com.paytus.backend.service.FaqService;
 import com.paytus.backend.service.ResponseService;
 import io.swagger.annotations.Api;
@@ -17,12 +18,15 @@ public class FaqController {
 
 
     private FaqService service;
+    private final EmailService emailService;
     private final ResponseService responseService;
 
-    public FaqController(FaqService service, ResponseService responseService){
+    public FaqController(FaqService service, EmailService emailService, ResponseService responseService){
         this.service = service;
+        this.emailService = emailService;
         this.responseService = responseService;
     }
+
 
     @ApiOperation(value = "문의 글 전체조회 api" ,notes = "조건없이 문의 전체 글을 조회합니다.")
     @GetMapping("")
@@ -41,6 +45,7 @@ public class FaqController {
     public SingleResult<FaqDTO> registerFaq(@RequestBody FaqDTO faqDTO) throws Exception {
         if (faqDTO.getFaqseq()==0){
             service.register(faqDTO);
+            emailService.sendSimpleMessage(faqDTO);
             return responseService.getSingleResult(faqDTO);
         }
         else

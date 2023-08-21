@@ -23,5 +23,4 @@ public class FaqDTO {
     private int faqisnew;
 
 
-
 }
