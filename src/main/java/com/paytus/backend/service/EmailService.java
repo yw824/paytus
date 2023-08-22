@@ -2,7 +2,6 @@ package com.paytus.backend.service;
 
 import com.paytus.backend.dto.FaqDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,9 @@ public class EmailService {
 
     public void sendSimpleMessage(FaqDTO faqDto) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("paytusintern@gmail.com");
-        message.setTo(faqDto.getFaqarea());
-        message.setSubject(faqDto.getFaqname());
+        message.setFrom(faqDto.getFaqemail());
+        message.setTo("paytusintern@gmail.com");
+        message.setSubject("페이투스 문의내용입니다");
         message.setText(faqDto.getFaqtext());
         message.setSentDate(faqDto.getFaqdate());
         emailSender.send(message);
