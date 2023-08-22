@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+import '../assets/Modal.css';
+
 const NoticeComponent = () => {
     const [notices, setNotices] = useState([]);
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    }
 
     useEffect(() => {
         axios.get('/api/notice')
@@ -33,12 +40,22 @@ const NoticeComponent = () => {
                                          ? 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 text-center py-3 px-3 font-bold grid-flow-dense'
                                          : 'mt-4 flex-col mx-auto grid md:grid-cols-5 gap-4 bg-[#BC614B] bg-opacity-70 text-center py-3 px-3 font-bold'
                                      }
-                                 key={notice.noticeseq}>
+                                 key={notice.noticeseq} onClick={toggleModal}>
                                 <p className='col-1'>{index}</p>
                                 <p className='col-2'>{notice.adminid}</p>
                                 <strong className='col-start-3 col-end-5'>{notice.noticetitle}</strong>
                                 <p className='col-start-5'>{notice.noticedate.slice(0, 10)}</p>
                             </div>
+                            {modal && (
+                                <div className='modal' onClick={toggleModal}>
+                                    <div className='overlay'></div>
+                                    <div className='modal-content'>
+                                        <h2>{notice.noticetitle}</h2>
+                                        <p>{notice.noticetext}</p>
+                                        <button className='close-modal' onClick={toggleModal}>CLOSE</button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )})
             }
