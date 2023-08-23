@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,15 +33,18 @@ public class SlackService {
 
     public void sendSlack(FaqDTO faqDTO) throws IOException {
 
+        LocalDateTime now = LocalDateTime.now();
+        String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분"));
+
         try {
-            System.out.println("faqDTO"+faqDTO);
+            //System.out.println("faqDTO: "+faqDTO);
             List<TextObject> textObjects = new ArrayList<>();
             textObjects.add(markdownText("*이름:*\n" + faqDTO.getFaqname()));
-            textObjects.add(markdownText("*문의 남긴 날짜:*\n" + faqDTO.getFaqdate()));
+            textObjects.add(markdownText("*문의 남긴 날짜:*\n" + formatedNow));
             textObjects.add(markdownText("*이메일:*\n" + faqDTO.getFaqemail()));
             textObjects.add(markdownText("*문의내용:*\n" + faqDTO.getFaqtext()));
 
-            System.out.println("textobjext"+textObjects);
+            //System.out.println("textobjext: "+textObjects);
 
             MethodsClient methods = Slack.getInstance().methods(token);
             ChatPostMessageRequest request = ChatPostMessageRequest.builder()
@@ -50,10 +55,10 @@ public class SlackService {
                             section(section -> section.fields(textObjects)
                             ))).build();
 
-            System.out.println("request"+request);
+            //System.out.println("request: "+request);
 
             methods.chatPostMessage(request);
-            System.out.println("실행완료");
+            System.out.println("슬랙 알람 전송완료");
 
         } catch (SlackApiException e) {
             throw new RuntimeException(e);
