@@ -12,7 +12,7 @@ public class EmailService {
 
     private JavaMailSender emailSender;
 
-    public void sendSimpleMessage(FaqDTO faqDto) {
+    public void sendMailToAdmin(FaqDTO faqDto) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(faqDto.getFaqemail());
         message.setTo("paytusintern@gmail.com");

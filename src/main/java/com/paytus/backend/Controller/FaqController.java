@@ -45,7 +45,7 @@ public class FaqController {
     public SingleResult<FaqDTO> registerFaq(@RequestBody FaqDTO faqDTO) throws Exception {
         if (faqDTO.getFaqseq()==0){
             service.register(faqDTO);
-            emailService.sendSimpleMessage(faqDTO);
+            emailService.sendMailToAdmin(faqDTO);;
             return responseService.getSingleResult(faqDTO);
         }
         else
