@@ -7,9 +7,12 @@ import com.paytus.backend.model.response.SingleResult;
 import com.paytus.backend.service.EmailService;
 import com.paytus.backend.service.FaqService;
 import com.paytus.backend.service.ResponseService;
+import com.paytus.backend.service.SlackService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @Api(tags = {"Faq API"})
 @RestController
@@ -20,11 +23,14 @@ public class FaqController {
     private FaqService service;
     private final EmailService emailService;
     private final ResponseService responseService;
+    private final SlackService slackService;
 
-    public FaqController(FaqService service, EmailService emailService, ResponseService responseService){
+    public FaqController(FaqService service, EmailService emailService, ResponseService responseService, SlackService slackService){
+
         this.service = service;
         this.emailService = emailService;
         this.responseService = responseService;
+        this.slackService = slackService;
     }
 
 
@@ -45,7 +51,11 @@ public class FaqController {
     public SingleResult<FaqDTO> registerFaq(@RequestBody FaqDTO faqDTO) throws Exception {
         if (faqDTO.getFaqseq()==0){
             service.register(faqDTO);
+
+            slackService.sendSlack(faqDTO);
+
             emailService.sendMailToAdmin(faqDTO);;
+
             return responseService.getSingleResult(faqDTO);
         }
         else
@@ -76,6 +86,5 @@ public class FaqController {
         else
             return responseService.getFailResult();
     }
-
 
 }
