@@ -52,7 +52,7 @@ public class FaqController {
         if (faqDTO.getFaqseq()==0){
             service.register(faqDTO);
 
-            slackService.sendSlack(faqDTO);
+            //slackService.sendSlack(faqDTO);
 
             emailService.sendMailToAdmin(faqDTO);;
 

@@ -1,6 +1,7 @@
 package com.paytus.backend.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,5 +15,4 @@ public class DataDTO {
     private String datatitle;
     private String datalink;
     private String datadate;
-
 }
