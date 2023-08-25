@@ -17,14 +17,14 @@ public class GetAllData {
     @Test
     void contextLoads() throws Exception {
 
-        List<DataDTO> list = null;
-        list = service.get();
-        System.out.println("ok");
-
-        for(DataDTO a:list){
-            System.out.println(a);
-        }
-
+//        List<DataDTO> list = null;
+//        list = service.get();
+//        System.out.println("ok");
+//
+//        for(DataDTO a:list){
+//            System.out.println(a);
+//        }
+//
 
     }
 

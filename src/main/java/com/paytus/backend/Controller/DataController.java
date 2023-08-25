@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 @Api(tags = {"Data API"})
 @RestController
 @RequestMapping("/api/data")
@@ -43,9 +45,9 @@ public class DataController {
     @ApiOperation(value = "자료실 게시글 생성 api" ,notes = "dataseq=0을 넣으면 자동으로 번호가 생성되고 자료실의 글을 생성합니다.")
     @PostMapping("")
     public SingleResult<DataDTO> registerData(@RequestPart(value = "dto",required = false) DataDTO dataDTO, @RequestPart(value = "file",required = false) MultipartFile multipartfile) throws Exception {
-        System.out.println("multipartfile: "+ multipartfile);
-        String dataname = multipartfile.getOriginalFilename();
-        System.out.println("datename: "+dataname);
+        System.out.println("multipartfile: "+ multipartfile); // Blob인 거,,,
+        String dataname = multipartfile.getOriginalFilename(); // blob
+        System.out.println("dataname: "+dataname);
         System.out.println("datadto: "+dataDTO);
         dataDTO.setDatatitle(dataname);
         System.out.println("datadto: "+dataDTO);

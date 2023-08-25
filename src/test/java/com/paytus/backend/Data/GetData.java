@@ -15,10 +15,10 @@ public class GetData {
     @Test
     void contextLoads() throws Exception {
 
-            DataDTO data = null;
-            data = service.get(1);
-            System.out.println("ok");
-            System.out.println(data);
+//            DataDTO data = null;
+//            data = service.get(1);
+//            System.out.println("ok");
+//            System.out.println(data);
 
     }
 

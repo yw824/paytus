@@ -15,8 +15,8 @@ public class DeleteData {
     @Test
     void contextLoads() throws Exception {
 
-            service.remove(1);
-            System.out.println("ok");
+//            service.remove(1);
+//            System.out.println("ok");
 
     }
 

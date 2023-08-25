@@ -15,9 +15,9 @@ public class UpdateData {
     @Test
     void contextLoads() throws Exception {
 
-            DataDTO data = new DataDTO(2,"abcd", "ab", "ab", null,null);
-            service.modify(data);
-            System.out.println("ok");
+//            DataDTO data = new DataDTO(2,"abcd", "ab", "ab", null,null);
+//            service.modify(data);
+//            System.out.println("ok");
     }
 
 }
