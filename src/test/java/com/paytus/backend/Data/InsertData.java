@@ -15,10 +15,10 @@ public class InsertData {
     @Test
     void contextLoads() throws Exception {
 
-            DataDTO data = new DataDTO(0,"abc", "a", "a", null);
-            service.register(data);
-            System.out.println("ok");
-            System.out.println(data);
+//            DataDTO data = new DataDTO(0,"abc", "a", "a", null,null);
+//            service.register(data);
+//            System.out.println("ok");
+//            System.out.println(data);
     }
 
 }

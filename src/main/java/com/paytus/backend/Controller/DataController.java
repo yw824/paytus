@@ -5,10 +5,15 @@ import com.paytus.backend.model.response.CommonResult;
 import com.paytus.backend.model.response.ListResult;
 import com.paytus.backend.model.response.SingleResult;
 import com.paytus.backend.service.DataService;
+import com.paytus.backend.service.FileService;
 import com.paytus.backend.service.ResponseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @Api(tags = {"Data API"})
 @RestController
@@ -16,6 +21,10 @@ import org.springframework.web.bind.annotation.*;
 public class DataController {
     private DataService service;
     private final ResponseService responseService;
+
+    @Value(value = "${datadir}")
+    String datadir;
+
     public DataController(DataService service, ResponseService responseService){
         this.service = service;
         this.responseService = responseService;
@@ -35,8 +44,16 @@ public class DataController {
 
     @ApiOperation(value = "자료실 게시글 생성 api" ,notes = "dataseq=0을 넣으면 자동으로 번호가 생성되고 자료실의 글을 생성합니다.")
     @PostMapping("")
-    public SingleResult<DataDTO> registerData(@RequestBody DataDTO dataDTO) throws Exception {
+    public SingleResult<DataDTO> registerData(@RequestPart(value = "dto",required = false) DataDTO dataDTO, @RequestPart(value = "file",required = false) MultipartFile multipartfile) throws Exception {
+        System.out.println("multipartfile: "+ multipartfile); // Blob인 거,,,
+        String dataname = multipartfile.getOriginalFilename(); // blob
+        System.out.println("dataname: "+dataname);
+        System.out.println("datadto: "+dataDTO);
+        dataDTO.setDatatitle(dataname);
+        System.out.println("datadto: "+dataDTO);
+
         if (dataDTO.getDataseq()==0){
+            FileService.saveFile(multipartfile, datadir);
             service.register(dataDTO);
             return responseService.getSingleResult(dataDTO);
         }

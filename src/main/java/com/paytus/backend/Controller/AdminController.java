@@ -12,14 +12,14 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"Admin API"})
-@RestController
-@RequestMapping("/api/admin")
-public class AdminController {
+    @RestController
+    @RequestMapping("/api/admin")
+    public class AdminController {
 
 
-    private AdminService service;
+        private AdminService service;
 
-    private final ResponseService responseService;
+        private final ResponseService responseService;
 
     public AdminController(AdminService service, ResponseService responseService){
         this.service = service;
