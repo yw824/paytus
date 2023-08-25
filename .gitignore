@@ -7,6 +7,7 @@ build
 
 ### STS ###
 src/main/resources/*.properties
+src/main/resources/static/datafile
 .apt_generated
 .classpath
 .factorypath
