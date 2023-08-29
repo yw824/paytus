@@ -18,6 +18,7 @@ const Navbar = () => {
                 <li className='p-6 text-xl text-bold'><Link to="/payments">Payments</Link></li>
                 <li className='p-6 text-xl text-bold'>Complimentary</li>
                 <li className='p-6 text-xl text-bold'><Link to="/notice">Notice</Link></li>
+                <li className='p-6 text-xl text-bold'><Link to="/files">Files</Link></li>
                 <li className='p-6 text-xl text-bold'><Link to="/faq">FAQ</Link></li>
             </ul>
             <div onClick={handleNav} className='block md:hidden'>
