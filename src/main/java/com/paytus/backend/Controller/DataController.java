@@ -159,15 +159,15 @@ public class DataController {
 //    }
 
     @ApiOperation(value = "자료실 첨부 파일 다운로드 api" ,notes = "해당 게시글의 첨부 파일을 다운로드 합니다.")
-    @GetMapping("/download/{dataseq}")
-    public SingleResult<DataDTO> downloadData(HttpServletRequest request, HttpServletResponse response, @PathVariable("dataseq") int dataseq) throws Exception {
+        @GetMapping("/download/{dataseq}")
+        public SingleResult<DataDTO> downloadData(HttpServletRequest request, HttpServletResponse response, @PathVariable("dataseq") int dataseq) throws Exception {
 
-        DataDTO dto = null;
+            DataDTO dto = null;
 
-        dto = service.get(dataseq);
-        System.out.println("dto: "+dto);
+            dto = service.get(dataseq);
+            System.out.println("dto: "+dto);
 
-        String filename = dto.getDatatitle();
+            String filename = dto.getDatatitle();
         System.out.println("filename: "+filename);
 
         File file = new File(datadir+filename);
