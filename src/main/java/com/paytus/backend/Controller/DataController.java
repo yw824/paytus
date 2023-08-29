@@ -56,7 +56,6 @@ public class DataController {
         System.out.println("multipartfile: "+ multipartfile); // Blob인 거,,,
         String dataname = multipartfile.getOriginalFilename(); // blob
         System.out.println("dataname: "+dataname);
-        System.out.println("datadto: "+dataDTO);
         dataDTO.setDatatitle(dataname);
         System.out.println("datadto: "+dataDTO);
 
@@ -94,70 +93,6 @@ public class DataController {
             return responseService.getFailResult();
     }
 
-//    @ApiOperation(value = "자료실 첨부 파일 다운로드 api" ,notes = "해당 게시글의 첨부 파일을 다운로드 합니다.")
-//    @GetMapping("/download/{dataseq}")
-//    public SingleResult<DataDTO> downloadData(HttpServletRequest request, HttpServletResponse response, @PathVariable("dataseq") int dataseq) throws Exception {
-//
-//        DataDTO dto = null;
-//
-//        dto = service.get(dataseq);
-//        System.out.println("dto: "+dto);
-//
-//        String filename = dto.getDatatitle();
-//        System.out.println("filename: "+filename);
-//
-//        File file = new File(filepath+filename);
-//        System.out.println("file: "+file);
-//
-//        FileInputStream fis = null;
-//        BufferedInputStream bis = null;
-//        ServletOutputStream sos = null;
-//
-//        try {
-//
-//            fis = new FileInputStream(file);
-//            System.out.println("fis: "+fis);
-//
-//            bis = new BufferedInputStream(fis);
-//            System.out.println("bis: "+bis);
-//
-//            sos = response.getOutputStream();
-//
-//            String reFilename = "";
-//
-//            // IE로 실행한 경우인지 판별-> IE는 따로 인코딩 작업을 거쳐야 한다. request헤어에 MSIE 또는 Trident가 포함되어 있는지 확인
-//            boolean isMSIE = request.getHeader("user-agent").indexOf("MISE") != -1 || request.getHeader("user-agent").indexOf("Trident") != -1;
-//
-//            if (isMSIE) {
-//                reFilename = URLEncoder.encode(filename, "utf-8");
-//                reFilename = reFilename.replaceAll("WW+", "%20");
-//
-//            } else {
-//                reFilename = new String(filename.getBytes("utf-8"), "ISO-8859-1");
-//            }
-//
-//            response.setContentType("application/octet-stream;charset=utf-8");
-//            response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
-//            response.setContentLength((int) file.length());
-//
-//            System.out.println("response"+response);
-//            System.out.println("response"+response.getHeader("Content-Disposition"));
-//
-//            int read = 0;
-//            while ((read = bis.read()) != -1) {
-//                sos.write(read);
-//            }
-//
-//        } catch (FileNotFoundException e){
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//
-//    }
-
     @ApiOperation(value = "자료실 첨부 파일 다운로드 api" ,notes = "해당 게시글의 첨부 파일을 다운로드 합니다.")
         @GetMapping("/download/{dataseq}")
         public SingleResult<DataDTO> downloadData(HttpServletRequest request, HttpServletResponse response, @PathVariable("dataseq") int dataseq) throws Exception {
@@ -165,52 +100,50 @@ public class DataController {
             DataDTO dto = null;
 
             dto = service.get(dataseq);
-            System.out.println("dto: "+dto);
 
             String filename = dto.getDatatitle();
-        System.out.println("filename: "+filename);
 
-        File file = new File(datadir+filename);
-        System.out.println("file: "+file);
+            File file = new File(datadir+filename);
+            System.out.println("download file: "+file);
 
-        FileInputStream fis = null;
-        BufferedInputStream bis = null;
-        ServletOutputStream sos = null;
+            FileInputStream fis = null;
+            BufferedInputStream bis = null;
+            ServletOutputStream sos = null;
 
         try {
 
             fis = new FileInputStream(file);
-            System.out.println("fis: "+fis);
 
             bis = new BufferedInputStream(fis);
-            System.out.println("bis: "+bis);
 
             sos = response.getOutputStream();
 
             String reFilename = "";
 
-            // IE로 실행한 경우인지 판별-> IE는 따로 인코딩 작업을 거쳐야 한다. request헤어에 MSIE 또는 Trident가 포함되어 있는지 확인
-            boolean isMSIE = request.getHeader("user-agent").indexOf("MISE") != -1 || request.getHeader("user-agent").indexOf("Trident") != -1;
+//            // IE로 실행한 경우인지 판별-> IE는 따로 인코딩 작업을 거쳐야 한다. request헤어에 MSIE 또는 Trident가 포함되어 있는지 확인
+//            boolean isMSIE = request.getHeader("user-agent").indexOf("MISE") != -1 || request.getHeader("user-agent").indexOf("Trident") != -1;
 
-            if (isMSIE) {
-                reFilename = URLEncoder.encode(filename, "utf-8");
-                reFilename = reFilename.replaceAll("WW+", "%20");
+//            if (isMSIE) {
+//                reFilename = URLEncoder.encode(filename, "utf-8");
+//                reFilename = reFilename.replaceAll("WW+", "%20");
+//
+//            } else {
+//                reFilename = new String(filename.getBytes("utf-8"), "ISO-8859-1");
+//            }
 
-            } else {
-                reFilename = new String(filename.getBytes("utf-8"), "ISO-8859-1");
-            }
+            reFilename = new String(filename.getBytes("utf-8"), "ISO-8859-1");
 
             response.setContentType("application/octet-stream;charset=utf-8");
             response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
             response.setContentLength((int) file.length());
 
-            System.out.println("response"+response);
-            System.out.println("response"+response.getHeader("Content-Disposition"));
+//            System.out.println("response"+response.getHeader("Content-Disposition"));
 
             int read = 0;
             while ((read = bis.read()) != -1) {
                 sos.write(read);
             }
+            System.out.println("download success");
 
         } catch (FileNotFoundException e){
             e.printStackTrace();
