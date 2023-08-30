@@ -34,10 +34,10 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2' // swagger
-    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2' //swagger
-    implementation("com.slack.api:bolt:1.18.0")
-    implementation("com.slack.api:bolt-servlet:1.18.0")
-    implementation("com.slack.api:bolt-jetty:1.18.0")
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2' // swagger
+    implementation("com.slack.api:bolt:1.18.0") // slack
+    implementation("com.slack.api:bolt-servlet:1.18.0") // slack
+    implementation("com.slack.api:bolt-jetty:1.18.0") // slack
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 }

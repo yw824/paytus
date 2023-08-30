@@ -36,41 +36,57 @@ public class FaqController {
 
     @ApiOperation(value = "문의 글 전체조회 api" ,notes = "조건없이 문의 전체 글을 조회합니다.")
     @GetMapping("")
-    public ListResult<FaqDTO> getAllFaq() throws Exception {
-        return responseService.getListResult(service.get());
+    public ListResult<FaqDTO> getAllFaq(){
+        try {
+            return responseService.getListResult(service.get());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation(value = "특정 문의 글 조회 api" ,notes = "해당 번호의 문의 글을 조회합니다.")
     @GetMapping("/{faqseq}")
-    public SingleResult<FaqDTO> getFaq(@PathVariable("faqseq") int faqseq) throws Exception {
-        return responseService.getSingleResult(service.get(faqseq));
+    public SingleResult<FaqDTO> getFaq(@PathVariable("faqseq") int faqseq){
+        try {
+            return responseService.getSingleResult(service.get(faqseq));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation(value = "문의 글 생성 api" ,notes = "faqseq=0을 넣으면 자동으로 번호가 생성되고 문의 글을 생성합니다.")
     @PostMapping("")
-    public SingleResult<FaqDTO> registerFaq(@RequestBody FaqDTO faqDTO) throws Exception {
+    public SingleResult<FaqDTO> registerFaq(@RequestBody FaqDTO faqDTO){
         if (faqDTO.getFaqseq()==0){
-            service.register(faqDTO);
+            try {
+                service.register(faqDTO);
+                slackService.sendSlack(faqDTO);
+                emailService.sendMailToAdmin(faqDTO);;
 
-            //slackService.sendSlack(faqDTO);
+            //slackService.sendSlack(faqDTO);======
+                return responseService.getSingleResult(faqDTO);
 
-            emailService.sendMailToAdmin(faqDTO);;
-
-            return responseService.getSingleResult(faqDTO);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailSingleResult();
     }
-    // @RequestBody: HTTP 요청의 바디내용을 통째로 자바객체로 변환해서 매핑된 메소드 파라미터로 전달해준다.
 
+    // @RequestBody: HTTP 요청의 바디내용을 통째로 자바객체로 변환해서 매핑된 메소드 파라미터로 전달해준다.
     @ApiOperation(value = "문의 글 수정 api" ,notes = "해당 번호의 문의 글을 수정합니다.")
     @PutMapping("/{faqseq}")
-    public SingleResult<FaqDTO> modifyFaq(@PathVariable("faqseq") int faqseq, @RequestBody FaqDTO faqDTO) throws Exception {
+    public SingleResult<FaqDTO> modifyFaq(@PathVariable("faqseq") int faqseq, @RequestBody FaqDTO faqDTO){
         if (getFaq(faqseq).getData()!=null){
             faqDTO.setFaqseq(faqseq);
-            service.modify(faqDTO);
+            try {
+                service.modify(faqDTO);
+                return responseService.getSingleResult(faqDTO);
 
-            return responseService.getSingleResult(faqDTO);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailSingleResult();
@@ -78,10 +94,15 @@ public class FaqController {
 
     @ApiOperation(value = "문의 글 삭제 api" ,notes = "해당 번호의 문의 글을 조회합니다.")
     @DeleteMapping("/{faqseq}")
-    public CommonResult removeFaq(@PathVariable("faqseq") int faqseq) throws Exception {
+    public CommonResult removeFaq(@PathVariable("faqseq") int faqseq){
         if (getFaq(faqseq).getData()!=null){
-            service.remove(faqseq);
-            return responseService.getSuccessResult();
+            try {
+                service.remove(faqseq);
+                return responseService.getSuccessResult();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailResult();
