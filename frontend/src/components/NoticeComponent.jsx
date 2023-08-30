@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import Modal from './Modal';
 import '../assets/Modal.css';
 
 const NoticeComponent = () => {
     const [notices, setNotices] = useState([]);
     const [modal, setModal] = useState(false);
+    const [modals, setModals] = useState([]);
 
     const toggleModal = () => {
         setModal(!modal);
@@ -13,8 +14,9 @@ const NoticeComponent = () => {
 
     useEffect(() => {
         axios.get('/api/notice')
-            .then(response => setNotices(response.data.list))
-            .catch(error => console.log(error))
+            .then((response) => {
+                setNotices(response.data.list)
+            }) .catch(error => console.log(error))
     }, []);
 
     return (
@@ -64,3 +66,13 @@ const NoticeComponent = () => {
 };
 
 export default NoticeComponent;
+/*
+useEffect(() => {
+    axios.get('/api/notice')
+        .then((response) =>
+        {
+            setNotices(response.data.list)
+        })
+        .catch(error => console.log(error))
+}, []);
+*/
