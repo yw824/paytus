@@ -6,18 +6,26 @@ const Form = () => {
 
     const handleChange = (e) => {
         const name = e.target.name;
-        const value = e.target.value;
+        let value = e.target.value;
+
+        if(name == "faqisnew" || name == 'faqterm') {
+            if (value == 'on')
+                value = 1;
+            else
+                value = 0;
+        }
         setData({...data, [name]: value});
     }
 
     const handleSubmit = (e) => {
-        console.log(data);
         e.preventDefault();
+        console.log(data);
         axios.post("/api/faq", data)
             .then((response) => {
-                console.log("completed!!!");
+                alert("completed!!!");
+                window.location.replace('/faq');
             }).catch(function (error) {
-                console.log(error);
+                alert(error);
         });
     };
 
@@ -50,13 +58,13 @@ const Form = () => {
                         <div className='my-8 max-w-[1240px] grid md:grid-cols-7 gap-4'>
                             <div className='col-start-2 col-end-5'>
                                 <div className='mx-auto grid md:grid-cols-5 ga-4'>
-                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqterm">개인정보 제공 및 활용 동의(필수)</label>
-                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqterm' id='faqterm'/>
+                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqterm" onChange={handleChange}>개인정보 제공 및 활용 동의(필수)</label>
+                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqterm' id='faqterm' onChange={handleChange}/>
                         </div>
                         <br />
                         <div className='mx-auto grid md:grid-cols-5 gap-4'>
-                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqisnew">페이투스 서비스 사용 중입니까?</label>
-                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqisnew' id='faqisnew'/>
+                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqisnew" onChange={handleChange}>페이투스 서비스 사용 중입니까?</label>
+                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqisnew' id='faqisnew' onChange={handleChange}/>
                         </div>
                     </div>
                     <button className='w-full h-full px-3 py-3 col-start-5 col-end-6 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>

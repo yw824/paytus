@@ -17,7 +17,7 @@ const Navbar = () => {
                 <li className='p-6 text-xl text-bold'><Link to="/">Home1</Link></li>
                 <li className='p-6 text-xl text-bold'><Link to="/payments">Payments</Link></li>
                 <li className='p-6 text-xl text-bold'>Complimentary</li>
-                <li className='p-6 text-xl text-bold'><Link to="/notice">Notice</Link></li>
+                <li className='p-6 text-xl text-bold'><Link to="/notices">Notice</Link></li>
                 <li className='p-6 text-xl text-bold'><Link to="/files">Files</Link></li>
                 <li className='p-6 text-xl text-bold'><Link to="/faq">FAQ</Link></li>
             </ul>
@@ -29,11 +29,12 @@ const Navbar = () => {
                     <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
                     <AiOutlineClose onClick={handleNav} className='mr-4 my-5 my-2md:flex' size={30}/>
                 </li>
-                <li className='p-4 text-xl border-b border-gray-600'>Home</li>
-                <li className='p-4 text-xl border-b border-gray-600'>Payments</li>
-                <li className='p-4 text-xl border-b border-gray-600'>Complimentary</li>
-                <li className='p-4 text-xl border-b border-gray-600'>Notice</li>
-                <li className='p-4'>FAQ</li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Home1</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/payments">Payments</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Complimentary</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/notices">Notice</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/files">Files</Link></li>
+                <li className='p-4'><Link to="/faq">FAQ</Link></li>
             </ul>
         </div>
     );
