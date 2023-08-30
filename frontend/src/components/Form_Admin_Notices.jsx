@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Form_Admin_Files = () => {
+const Form_Admin_Notices = () => {
     const [admins, setAdmins] = useState([]);
 
     useEffect(() => {
@@ -10,7 +10,7 @@ const Form_Admin_Files = () => {
             .catch(error => console.log(error))
     }, []);
 
-    const [data, setData] = useState({adminid: "", datatitle: "", datalink: null});
+    const [notice, setNotice] = useState({adminid: "", noticetext: "", noticetitle: "", noticeurl: ""});
     const [writer, setWriter] = useState({adminid: "", adminpw: ""});
     const [file, setFile] = useState(null);
 
@@ -20,19 +20,12 @@ const Form_Admin_Files = () => {
         const name = e.target.name;
         const value = e.target.value;
 
-        setData({...data, [name]: value});
+        setNotice({...notice, [name]: value});
     }
 
     const handleIdChange = (e) => {
         handleDataChange(e);
         handleWriterChange(e);
-    }
-
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-        // form에서 파일이 하나만 올려도 form에 파일 선택하면 배열에 저장되어 있음
-        // 그래서 개별 파일을 보낼 거면 꺼내서 변수에 저장해야 함 : files 속성에 저장되어 있음
-        // 안 그러면 blob 써야 하는데, blob : [object object]로 저장됨
     }
 
     const handleWriterChange = (e) => {
@@ -54,19 +47,15 @@ const Form_Admin_Files = () => {
         };
 
         if(!granted) {
-            alert("NOT GRANTED!!!");
+            alert("UPLOAD ACCESS NOT GRANTED!!!");
             return;
         }
-        alert("GRANTED!!"); // datalink null
+        alert("UPLOAD ACCESS GRANTED!!"); // datalink null
 
-        const formData = new FormData();
-        formData.append("dto", new Blob([JSON.stringify(data)], {type: "application/json"}));
-        formData.append("file", file);
-
-        axios.post("/api/data", formData)
+        axios.post("/api/notice", notice)
             .then((response) => {
                 alert("Completed!!!");
-                window.location.replace('/files');
+                window.location.replace('/notices');
             }).catch(function (error) {
                 alert('ERROR - Try Again!');
         });
@@ -77,16 +66,19 @@ const Form_Admin_Files = () => {
             <form enctype="multipart/form-data" className='border-gray-300 flex flex-col shadow-sm max-w-[1240px] my-auto mx-auto bg-white whitespace-nowrap h-fit' method='post' onSubmit={handleSubmit}>
 
                 <h1 className='mt-4 font-bold'>작성자 아이디<span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='adminid' id='' onChange={handleIdChange} value={data.company} placeholder='작성자 아이디'/>
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='adminid' id='' onChange={handleIdChange} placeholder='작성자 아이디'/>
 
                 <h1 className='mt-4 font-bold'>작성자 비밀번호<span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="password" name='adminpw' id='' onChange={handleWriterChange} value={data.company} placeholder='작성자 비밀번호'/>
-
-                <h1 className='mt-4 font-bold'>파일 업로드<span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 bg-[#F1511F] bg-opacity-30 rounded-md border-2' type="file" name='datatlink' id=''  onChange={handleFileChange} />
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="password" name='adminpw' id='' onChange={handleWriterChange} placeholder='작성자 비밀번호'/>
 
                 <h1 className='mt-4 font-bold'>제목<span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='datatitle' id='' onChange={handleDataChange} value={data.company} placeholder='데이터 제목'/>
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='noticetitle' id='' onChange={handleDataChange} placeholder='공지사항 제목을 입력하세요.'/>
+
+                <h1 className='mt-4 font-bold'>내용<span className='text-[#F1511F]'>*</span></h1>
+                <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name="noticetext" id='noticetext' cols='30' onChange={handleDataChange} value={notice.noticetext} rows='10' placeholder='type here......'></textarea>
+
+                <h1 className='mt-4 font-bold'>관련 자료실 주소(URL)<span className='text-[#F1511F]'>*</span></h1>
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="url" name='noticeurl' id='' onChange={handleDataChange} placeholder='데이터 제목'/>
 
                 <button className='mt-4 mb-4 w-full h-full px-3 py-3 col-start-5 col-end-6 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>
             </form>
@@ -94,4 +86,4 @@ const Form_Admin_Files = () => {
     )
 };
 
-export default Form_Admin_Files;
+export default Form_Admin_Notices;

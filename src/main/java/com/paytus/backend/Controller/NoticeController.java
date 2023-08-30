@@ -25,22 +25,35 @@ public class NoticeController {
 
     @ApiOperation(value = "공지사항 게시글 전체 조회 api" ,notes = "자료실 전체 게시글을 조회합니다.")
     @GetMapping("")
-    public ListResult<NoticeDTO> getAllNotice() throws Exception {
-        return responseService.getListResult(service.get());
+    public ListResult<NoticeDTO> getAllNotice(){
+        try {
+            return responseService.getListResult(service.get());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation(value = "특정 공지사항 게시글 조회 api" ,notes = "해당 번호의 게시글을 조회합니다.")
     @GetMapping("/{noticeseq}")
-    public SingleResult<NoticeDTO> getNotice(@PathVariable("noticeseq") int noticeseq) throws Exception {
-        return responseService.getSingleResult(service.get(noticeseq));
+    public SingleResult<NoticeDTO> getNotice(@PathVariable("noticeseq") int noticeseq){
+        try {
+            return responseService.getSingleResult(service.get(noticeseq));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation(value = "공지사항 게시글 생성 api" ,notes = "noticeseq=0을 넣으면 자동으로 번호가 생성되고 게시글을 생성합니다.")
     @PostMapping("")
-    public SingleResult<NoticeDTO> registerNotice(@RequestBody NoticeDTO noticeDTO) throws Exception {
+    public SingleResult<NoticeDTO> registerNotice(@RequestBody NoticeDTO noticeDTO){
         if (noticeDTO.getNoticeseq()==0){
-            service.register(noticeDTO);
-            return responseService.getSingleResult(noticeDTO);
+            try {
+                service.register(noticeDTO);
+                return responseService.getSingleResult(noticeDTO);
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailSingleResult();
@@ -49,12 +62,16 @@ public class NoticeController {
 
     @ApiOperation(value = "공지사항 게시글 수정 api" ,notes = "해당 번호의 게시글을 수정합니다.")
     @PutMapping("/{noticeseq}")
-    public SingleResult<NoticeDTO> modifyNotice(@PathVariable("noticeseq") int noticeseq, @RequestBody NoticeDTO noticeDTO) throws Exception {
+    public SingleResult<NoticeDTO> modifyNotice(@PathVariable("noticeseq") int noticeseq, @RequestBody NoticeDTO noticeDTO){
         if (getNotice(noticeseq).getData()!=null){
             noticeDTO.setNoticeseq(noticeseq);
-            service.modify(noticeDTO);
+            try {
+                service.modify(noticeDTO);
+                return responseService.getSingleResult(noticeDTO);
 
-            return responseService.getSingleResult(noticeDTO);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailSingleResult();
@@ -62,10 +79,15 @@ public class NoticeController {
 
     @ApiOperation(value = "공지사항 게시글 삭제 api" ,notes = "해당 번호의 게시글을 삭제합니다.")
     @DeleteMapping("/{noticeseq}")
-    public CommonResult removeNotice(@PathVariable("noticeseq") int noticeseq) throws Exception {
+    public CommonResult removeNotice(@PathVariable("noticeseq") int noticeseq){
         if (getNotice(noticeseq).getData()!=null){
-            service.remove(noticeseq);
-            return responseService.getSuccessResult();
+            try {
+                service.remove(noticeseq);
+                return responseService.getSuccessResult();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             return responseService.getFailResult();
