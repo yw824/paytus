@@ -19,10 +19,8 @@ const Form_Admin_Notices = () => {
     const handleDataChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log("handleChange: " + name + ", " + value);
 
         setNotice({...notice, [name]: value});
-        console.log("Current data// adminid: " + notice.adminid + '/datatitle: ' + notice.noticetitle + "/noticetext: " + notice.noticetext + '/noticelink: ' + notice.noticelink);
     }
 
     const handleIdChange = (e) => {
@@ -33,9 +31,7 @@ const Form_Admin_Notices = () => {
     const handleWriterChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        console.log("handleWriterChange: " + name + ", " + value);
         setWriter({...writer, [e.target.name]: e.target.value});
-        console.log("Current Writer// adminid-" + writer.adminid + "/adminpw-" + writer.adminpw);
     }
 
     const handleSubmit = (e) => {
@@ -51,16 +47,17 @@ const Form_Admin_Notices = () => {
         };
 
         if(!granted) {
-            alert("NOT GRANTED!!!");
+            alert("UPLOAD ACCESS NOT GRANTED!!!");
             return;
         }
-        alert("GRANTED: " + notice.adminid + ", " + notice.noticetitle + ", " + notice.noticetext + ", " + notice.noticeurl); // datalink null
+        alert("UPLOAD ACCESS GRANTED!!"); // datalink null
 
         axios.post("/api/notice", notice)
             .then((response) => {
-                console.log("completed!!!");
+                alert("Completed!!!");
+                window.location.replace('/notices');
             }).catch(function (error) {
-            console.log(error);
+                alert('ERROR - Try Again!');
         });
     };
 
@@ -78,7 +75,7 @@ const Form_Admin_Notices = () => {
                 <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='noticetitle' id='' onChange={handleDataChange} placeholder='공지사항 제목을 입력하세요.'/>
 
                 <h1 className='mt-4 font-bold'>내용<span className='text-[#F1511F]'>*</span></h1>
-                <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name="noticetext" id='noticetext' cols='30' onChange={handleDataChange} value={""} rows='10' placeholder='type here......'></textarea>
+                <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name="noticetext" id='noticetext' cols='30' onChange={handleDataChange} value={notice.noticetext} rows='10' placeholder='type here......'></textarea>
 
                 <h1 className='mt-4 font-bold'>관련 자료실 주소(URL)<span className='text-[#F1511F]'>*</span></h1>
                 <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="url" name='noticeurl' id='' onChange={handleDataChange} placeholder='데이터 제목'/>

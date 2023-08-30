@@ -19,10 +19,8 @@ const Form_Admin_Files = () => {
     const handleDataChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log("handleChange: " + name + ", " + value);
 
         setData({...data, [name]: value});
-        console.log("Current data// adminid-" + data.adminid + '/datatitle-' + data.datatitle + '/datalink-' + data.datalink);
     }
 
     const handleIdChange = (e) => {
@@ -40,9 +38,7 @@ const Form_Admin_Files = () => {
     const handleWriterChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        console.log("handleWriterChange: " + name + ", " + value);
         setWriter({...writer, [e.target.name]: e.target.value});
-        console.log("Current Writer// adminid-" + writer.adminid + "/adminpw-" + writer.adminpw);
     }
 
     const handleSubmit = (e) => {
@@ -52,30 +48,27 @@ const Form_Admin_Files = () => {
             if(admin.adminid === writer.adminid && admin.adminpw === writer.adminpw)
             {
                 granted = true;
-                console.log("GRANTED SET");
                 break;
             }
             granted = false;
-            console.log("GRANT REVOKED");
         };
 
         if(!granted) {
             alert("NOT GRANTED!!!");
             return;
         }
-        alert("GRANTED: " + data.adminid + ", " + data.datalink); // datalink null
+        alert("GRANTED!!"); // datalink null
 
         const formData = new FormData();
         formData.append("dto", new Blob([JSON.stringify(data)], {type: "application/json"}));
         formData.append("file", file);
-        console.log(formData.get('file'));
-        console.log(formData.get('dto'));
 
         axios.post("/api/data", formData)
             .then((response) => {
-                console.log("completed!!!");
+                alert("Completed!!!");
+                window.location.replace('/files');
             }).catch(function (error) {
-            console.log(error);
+                alert('ERROR - Try Again!');
         });
     };
 
