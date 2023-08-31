@@ -15,7 +15,5 @@ public class DataDTO {
     private String datatitle;
     private String datalink;
     private String datadate;
-
     private MultipartFile datafile;
-
 }
