@@ -5,8 +5,6 @@ import com.paytus.backend.frame.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 @Mapper
 public interface DataMapper extends MyMapper<Integer, DataDTO> {
