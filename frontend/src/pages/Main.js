@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Intro from '../components/Intro';
+import Main_Slide from '../components/Main_Slide';
 import Charts from '../components/Charts';
 import Services from '../components/Services';
 import FAQ from '../components/Main_to_FAQ';
@@ -19,7 +20,7 @@ const Main = () => {
     return (
         <div>
             <Navbar />
-            <Intro img={Back1} title='편리한 전자결제 페이투스' text1='고객의 환경에 적합한 다양한 결제환경과' text2 = '안전한 결제수단을 제공합니다.' />
+            <Main_Slide />
             <Charts />
             <Services />
             <Main_to_FAQ />
@@ -30,3 +31,5 @@ const Main = () => {
 };
 
 export default Main;
+
+// <Intro img={Back1} title='편리한 전자결제 페이투스' text1='고객의 환경에 적합한 다양한 결제환경과' text2 = '안전한 결제수단을 제공합니다.' />
