@@ -4,7 +4,7 @@ import BackGround from '../assets/main_back2.jpg'
 
 const Intro_Escrow = () => {
     return (
-        <div className='object-fill max-w-[1240px] mx-auto px-4 items-center text-white whitespace-nowrap h-fit' style={{
+        <div className='bg-cover bg-center bg-[#BC614B] object-fill max-w-[1240px] mx-auto items-center text-white whitespace-nowrap h-fit' style={{
             backgroundImage: `url(${BackGround})`, height:'500px', backgroundPosition: "center", width:'100%', opacity: 0.8}}>
             <h4 className='invisible'>_</h4>
             <h2 className='mt-8 text-4xl text-center text-[rgb(210,48,44)] font-bold'>에스크로란?</h2>
@@ -17,7 +17,7 @@ const Intro_Escrow = () => {
             </h3>
             <div className='max-w-[1240px] mx-auto mt-8 px-6 grid md:grid-cols-2 gap-8'>
                 <div className='flex items-center flex-col rounded-lg hover:scale-105 duration-300'>
-                    <button className='bg-[#F1511F] w-[200px] mt-2 rounded-md font-bold mx-auto px-3 py-3 text-white text-bold text-xl text-center'>서비스 신청하기</button>
+                    <button className='bg-[#F1511F] w-[200px] rounded-md font-bold mx-auto px-3 py-3 text-white text-bold text-xl text-center'>서비스 신청하기</button>
                 </div>
                 <div className='flex items-center mb-8 flex-col rounded-lg hover:scale-105 duration-300'>
                     <button className='bg-[#D2302C] w-[200px] rounded-md font-bold mx-auto px-3 py-3 text-white text-bold text-xl text-center'>에스크로 가입확인</button>

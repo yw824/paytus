@@ -14,12 +14,12 @@ const Navbar = () => {
         <div className='bg-white bg-local flex justify-between items-start h-24 max-w-[1240px] mx-auto text-black'>
             <img className='w-[10rem] md:flex' src={LOGO} alt='Paytus '/>
             <ul className='hidden md:flex'>
-                <li className='p-6 text-xl text-bold'><Link to="/">Home1</Link></li>
-                <li className='p-6 text-xl text-bold'><Link to="/payments">Payments</Link></li>
-                <li className='p-6 text-xl text-bold'>Complimentary</li>
-                <li className='p-6 text-xl text-bold'><Link to="/notices">Notice</Link></li>
-                <li className='p-6 text-xl text-bold'><Link to="/files">Files</Link></li>
-                <li className='p-6 text-xl text-bold'><Link to="/faq">FAQ</Link></li>
+                <li className='p-6 text-md font-bold'><Link to="/">Main</Link></li>
+                <li className='p-6 text-md font-bold'><Link to="/payments">결제서비스</Link></li>
+                <li className='p-6 text-md font-bold'>부가서비스</li>
+                <li className='p-6 text-md font-bold'><Link to="/notices">공지사항</Link></li>
+                <li className='p-6 text-md font-bold'><Link to="/files">자료실</Link></li>
+                <li className='p-6 text-md font-bold'><Link to="/faq">FAQ</Link></li>
             </ul>
             <div onClick={handleNav} className='block md:hidden'>
                 {nav ? <AiOutlineClose className='mr-4 my-4' size={30}/> : <AiOutlineMenu className='mr-4 my-4' size={30} />}
@@ -29,11 +29,11 @@ const Navbar = () => {
                     <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
                     <AiOutlineClose onClick={handleNav} className='mr-4 my-5 my-2md:flex' size={30}/>
                 </li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Home1</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/payments">Payments</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Complimentary</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/notices">Notice</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/files">Files</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Main</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/payments">결제서비스</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">부가서비스</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/notices">공지사항</Link></li>
+                <li className='p-4 text-xl border-b border-gray-600'><Link to="/files">자료실</Link></li>
                 <li className='p-4'><Link to="/faq">FAQ</Link></li>
             </ul>
         </div>
