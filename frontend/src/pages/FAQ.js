@@ -20,7 +20,7 @@ const FAQ = () => {
                     <hr />
                 </div>
             </div>
-            <h3 className='object-fill font-bold max-w-[1240px] mx-auto px-4 whitespace-nowrap h-fit text-right'>
+            <h3 className='object-fill font-bold max-w-[1240px] mx-autov px-4 whitespace-nowrap h-fit text-right'>
                 <span className='text-[#F1511F] font-bold'>*</span>표시는 필수 입력 항목입니다.<br />
             </h3>
             <Form/>

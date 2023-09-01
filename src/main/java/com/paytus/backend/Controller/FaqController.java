@@ -61,8 +61,8 @@ public class FaqController {
             try {
                 service.register(faqDTO);
                 slackService.sendSlack(faqDTO);
-                emailService.sendMailToAdmin(faqDTO);;
-
+                emailService.sendMailToAdmin(faqDTO);
+                slackService.sendSlack(faqDTO);
                 return responseService.getSingleResult(faqDTO);
 
             } catch (Exception e) {
