@@ -62,7 +62,7 @@ public class FaqController {
                 service.register(faqDTO);
                 slackService.sendSlack(faqDTO);
                 emailService.sendMailToAdmin(faqDTO);
-                slackService.sendSlack(faqDTO);
+
                 return responseService.getSingleResult(faqDTO);
 
             } catch (Exception e) {
