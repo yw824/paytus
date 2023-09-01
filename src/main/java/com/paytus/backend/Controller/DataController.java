@@ -186,6 +186,7 @@ public class DataController {
 
             // int read(): FileInputStream의 메소드이며, 1byte씩 내용을 읽어 정수로 반환
             // 버퍼에서 1바이트씩 읽어 들인 후 정수로 반환하여 read에 저장
+            // 파일 입출력 시 read 함수는 파일의 끝 EOF를 만나면 -1을 리턴
             while ((read = bis.read()) != -1) {
                 // 바이트 단위로 입력받은 내용을 파일에 기록
                 sos.write(read); // sos.write(쓰고자하는 데이터의 버퍼);
