@@ -3,7 +3,7 @@ import Chart from '../assets/charts.PNG'
 
 const Charts = (props) => {
     return (
-        <div className='bg-fixed h-fit flex flex-wrap max-w-[1240px] mx-auto items-center text-white whitespace-nowrap' style={{
+        <div className='relative bg-fixed h-fit flex flex-wrap max-w-[1240px] mx-auto items-center text-white whitespace-nowrap' style={{
             backgroundImage: `url(${Chart})`, backgroundRepeat: 'no-repeat',  backgroundPosition: "center"}}>
 
             <div className='bg-[#BC614B] max-w-[1240px] mx-auto' style={{width:'100%', height: '100%', opacity: 0.8}}>

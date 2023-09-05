@@ -40,7 +40,7 @@ const Form = () => {
                     <option value="notice">자료실</option>
                 </select>
                 <h1 className='mt-4 font-bold'>회사명 <span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='faqcorp' id='faqcorp' onChange={handleChange} value={data.company} placeholder='회사명'/>
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="text" name='faqcorp' id='faqcorp' onChange={handleChange} value={data.faqcorp} placeholder='회사명'/>
                 <div className='w-full max-w-[1240px] mx-auto grid md:grid-cols-3 gap-4'>
                     <div className='col-1 w-full'>
                         <h1 className='mt-4 font-bold'>성명 <span className='text-[#F1511F]'>*</span></h1>
@@ -48,13 +48,13 @@ const Form = () => {
                     </div>
                     <div className='col-start-2 col-end-4'>
                         <h1 className='mt-4 font-bold'>연락처 <span className='text-[#F1511F]'>*</span></h1>
-                        <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="phone" name='faqcall' id='faqcall' onChange={handleChange} value={data.phone} placeholder='0##-####-####'/>
+                        <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="phone" name='faqcall' id='faqcall' onChange={handleChange} value={data.faqcall} placeholder='0##-####-####'/>
                     </div>
                 </div>
                 <h1 className='mt-4 font-bold'>이메일 <span className='text-[#F1511F]'>*</span></h1>
-                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="email" name='faqemail' id='faqemail' onChange={handleChange} value={data.email} placeholder='Enter Your Email'/>
+                <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="email" name='faqemail' id='faqemail' onChange={handleChange} value={data.faqemail} placeholder='이메일을 입력해 주세요'/>
                 <h1 className='mt-4 font-boldp'>문의 내용 <span className='text-[#F1511F]'>*(최대 2000자)</span></h1>
-                        <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name='faqtext' id='faqtext' cols='30' onChange={handleChange} value={data.message} rows='10' placeholder='type here......'></textarea>
+                        <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name='faqtext' id='faqtext' cols='30' onChange={handleChange} value={data.faqtext} rows='10' placeholder='문의사항을 입력해 주세요(최대 1000자)'></textarea>
                         <div className='my-8 max-w-[1240px] grid md:grid-cols-7 gap-4'>
                             <div className='col-start-2 col-end-5'>
                                 <div className='mx-auto grid md:grid-cols-5 ga-4'>

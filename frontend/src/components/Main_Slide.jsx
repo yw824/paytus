@@ -49,21 +49,22 @@ const Main_Slide = () => {
     };
 
     return (
-        <div className='object-fill max-w-[1240px] flex flex-col mx-auto items-center text-white whitespace-nowrap h-fit w-full m-auto py-16 px-4 relative group'
+        <div className='object-fill max-w-[1240px] justify-items-stretch flex flex-col mx-auto text-white whitespace-nowrap h-fit w-full m-auto py-16 px-4 relative group'
              style={{ backgroundImage: `url(${slides[currentIndex].url})`, height:'400px', backgroundPosition: "center"}}
         >
-            <h2 className='absolute top-[30%] text-4xl text-center'>{slides[currentIndex].title}</h2>
-            <h3 className='absolute top-[50%] mt-8 text-xl text-center'>{slides[currentIndex].text1}<br />{slides[currentIndex].text2}</h3>
-
-            {/* Left Arrow */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactLeft onClick={prevSlide} size={30} />
+            <h2 className='static top-[30%] text-4xl text-center'>{slides[currentIndex].title}</h2>
+            <h3 className='static top-[50%] mt-8 text-xl text-center'>{slides[currentIndex].text1}<br />{slides[currentIndex].text2}</h3>
+            <div className='grid grid-cols-2'>
+                {/* Left Arrow */}
+                <div className='group-hover:block static flex place-self-start top-[50%] w-fit -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                    <BsChevronCompactLeft onClick={prevSlide} size={30} />
+                </div>
+                {/* Right Arrow */}
+                <div className='group-hover:block static flex place-self-end top-[50%] w-fit -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                    <BsChevronCompactRight onClick={nextSlide} size={30} />
+                </div>
             </div>
-            {/* Right Arrow */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactRight onClick={nextSlide} size={30} />
-            </div>
-            <div className='flex justify-center py-2 absolute top-[90%] place-items-baseline'>
+            <div className='flex justify-center py-2 sstatic top-[90%] place-items-baseline'>
                 {slides.map((slide, slideIndex) => (
                     <div
                         key={slideIndex}

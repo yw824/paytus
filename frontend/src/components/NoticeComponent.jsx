@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import '../assets/Modal.css';
 import {AiOutlineCloseSquare} from 'react-icons/ai';
 
 const NoticeComponent = () => {
@@ -73,7 +72,7 @@ const NoticeComponent = () => {
                                  key={notice.noticeseq}>
                                 <p className='col-1 my-auto'>{index}/[{notice.noticeseq}]</p>
                                 <p className='col-2 my-auto'>{notice.adminid}</p>
-                                <strong className='col-start-3 col-end-5 my-auto' onClick={() => showModal(notice.noticeseq)}>{notice.noticetitle}</strong>
+                                <button className='col-start-3 col-end-5 my-auto hover:scale-105 duration-300' onClick={() => showModal(notice.noticeseq)}>{notice.noticetitle}</button>
                                 <p className='col-5 my-auto'>{notice.noticedate.slice(0, 10)}</p>
                                 <AiOutlineCloseSquare className='mr-4 my-4 col-6 mx-auto' size={30} onClick={() => deleteContent(notice.noticeseq)}/>
                             </div>
@@ -91,7 +90,7 @@ const NoticeComponent = () => {
                                                         className="bg-transparent border-0 text-black float-right"
                                                         onClick={() => setModal(false)}
                                                     >
-                                                        <span className="text-black opacity-7 place-items-center h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
+                                                        <span className="hover:scale-105 duration-300 text-black opacity-7 place-items-center h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
                                                             <AiOutlineCloseSquare />
                                                         </span>
                                                     </button>

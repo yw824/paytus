@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='bg-white bg-local flex justify-between items-start h-24 max-w-[1240px] mx-auto text-black'>
+        <div className='bg-white flex justify-between items-start h-24 max-w-[1240px] mx-auto text-black'>
             <img className='w-[10rem] md:flex' src={LOGO} alt='Paytus '/>
             <ul className='hidden md:flex'>
                 <li className='p-6 text-md font-bold'><Link to="/">Main</Link></li>
@@ -24,7 +24,9 @@ const Navbar = () => {
             <div onClick={handleNav} className='block md:hidden'>
                 {nav ? <AiOutlineClose className='mr-4 my-4' size={30}/> : <AiOutlineMenu className='mr-4 my-4' size={30} />}
             </div>
-            <ul className={nav ? 'fixed left-0 top-0 w-[40%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500 text-black' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+            <ul className={nav
+                ? 'fixed left-0 top-0 w-[40%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500 text-black'
+                : 'fixed ease-in-out duration-500 left-[-100%]'}>
                 <li className='flex'>
                     <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
                     <AiOutlineClose onClick={handleNav} className='mr-4 my-5 my-2md:flex' size={30}/>
@@ -41,5 +43,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// <h1 className='w-full text-3xl font-bold text-[#F15D3C]'>Paytus</h1> 
-// <img className='w-[100px] mx-auto mt-[-3rem] my-8' src={LOGO} alt='Paytus '/>
