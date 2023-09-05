@@ -25,17 +25,17 @@ const Navbar = () => {
                 {nav ? <AiOutlineClose className='mr-4 my-4' size={30}/> : <AiOutlineMenu className='mr-4 my-4' size={30} />}
             </div>
             <ul className={nav
-                ? 'fixed left-0 top-0 w-[40%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500 text-black'
-                : 'fixed ease-in-out duration-500 left-[-100%]'}>
+                ? 'fixed z-50 left-0 top-0 w-[30%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500 text-black'
+                : 'fixed z-50 ease-in-out duration-500 left-[-100%]'}>
                 <li className='flex'>
                     <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
                     <AiOutlineClose onClick={handleNav} className='mr-4 my-5 my-2md:flex' size={30}/>
                 </li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">Main</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/payments">결제서비스</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/">부가서비스</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/notices">공지사항</Link></li>
-                <li className='p-4 text-xl border-b border-gray-600'><Link to="/files">자료실</Link></li>
+                <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/">Main</Link></li>
+                <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/payments">결제서비스</Link></li>
+                <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/">부가서비스</Link></li>
+                <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/notices">공지사항</Link></li>
+                <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/files">자료실</Link></li>
                 <li className='p-4'><Link to="/faq">FAQ</Link></li>
             </ul>
         </div>
