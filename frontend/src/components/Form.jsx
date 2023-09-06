@@ -22,7 +22,7 @@ const Form = () => {
         console.log(data);
         axios.post("/api/faq", data)
             .then((response) => {
-                alert("completed!!!");
+                alert("요청하신 문의가 등록되었습니다.");
                 window.location.replace('/faq');
             }).catch(function (error) {
                 alert(error);
@@ -65,7 +65,7 @@ const Form = () => {
                             <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqisnew' id='faqisnew' onChange={handleChange}/>
                         </div>
                     </div>
-                    <button className='w-full h-full px-3 py-3 col-4 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>
+                    <button className='hover:scale-105 duration-300 w-full h-full px-3 py-3 col-4 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>
                 </div>
             </form>
         </div>
