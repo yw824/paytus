@@ -65,9 +65,9 @@ return (
                                  : 'mt-4 flex-col mx-auto grid md:grid-cols-6 gap-4 text-center py-3 px-3 font-bold grid-flow-dense bg-[#BC614B] bg-opacity-70 '
                              }
                          key={datum.dataseq} onClick={toggleModal}>
-                        <p className='col-1'>{index}</p>
-                        <p className='col-2'>{datum.adminid}</p>
-                        <button className='col-start-3 col-end-5 hover:scale-105 duration-300'
+                        <p className='col-1 my-auto'>{index}</p>
+                        <p className='col-2 my-auto'>{datum.adminid}</p>
+                        <button className='my-auto col-start-3 col-end-5 hover:scale-105 duration-300'
                                 onClick={() => downloadImage(datum.dataseq)}
                         >{datum.datatitle}</button>
                         <p className='col-5 my-auto'>{datum.datadate.slice(0, 10)}</p>

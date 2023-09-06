@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import LOGO from '../assets/paytus_noback.png'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-white flex justify-between items-start h-24 max-w-[1240px] mx-auto text-black'>
-            <img className='w-[10rem] md:flex' src={LOGO} alt='Paytus '/>
+            <Link to="/"><img className='w-[10rem] md:flex' src={LOGO} alt='Paytus'/></Link>
             <ul className='hidden md:flex'>
                 <li className='p-6 text-md font-bold'><Link to="/">Main</Link></li>
                 <li className='p-6 text-md font-bold'><Link to="/payments">결제서비스</Link></li>
@@ -28,7 +28,7 @@ const Navbar = () => {
                 ? 'fixed z-50 left-0 top-0 w-[30%] h-full border-r border-r-gray-900 bg-white ease-in-out duration-500 text-black'
                 : 'fixed z-50 ease-in-out duration-500 left-[-100%]'}>
                 <li className='flex'>
-                    <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
+                    <Link to="/"><img className='w-[10rem] md:flex' src={LOGO} alt='Paytus '/></Link>
                     <AiOutlineClose onClick={handleNav} className='mr-4 my-5 my-2md:flex' size={30}/>
                 </li>
                 <li className='p-4 text-md font-bold border-b border-gray-600'><Link to="/">Main</Link></li>
@@ -43,3 +43,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+// <img className='ml-2 my-2md:flex w-[150px]' src={LOGO} alt='Paytus '/>
