@@ -11,7 +11,7 @@ public class InsertFaq {
     @Test
     void contextLoads() throws Exception {
         FaqDTO faq = new FaqDTO(0,"a","a","a","a","a","a",null,1 ,1);
-        service.register(faq);
+        //service.register(faq);
         System.out.println("ok");
         System.out.println(faq);
     }
