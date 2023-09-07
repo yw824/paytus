@@ -13,23 +13,23 @@ const Footer = () => {
     <div className='max-w-[1240px] mx-auto py-16 px-4  text-gray-300 bg-[#BC614B]'>
         <div className='lg:col-span-2 grid lg:grid-cols-2 gap-8 mx-8 justify-between'>
             <div className='mx-8'>
-                <h1 className='w-full text-4xl font-bold text-white'>Paytus Inc : </h1>
-                <p className='py-4 text-3xl'>Global Fintech Integrated <br />Payment Business Corp.</p>
+                <h1 className='w-full text-2xl font-bold text-white'>Paytus Inc : </h1>
+                <p className='py-4 text-xl'>Global Fintech Integrated <br />Payment Business Corp.</p>
                 <br />
                 <div>
-                    <h6 className='font-medium text-2xl text-white border-b border-white'>Services</h6>
+                    <h6 className='font-medium text-lg text-white border-b border-white'>Services</h6>
                     <br></br>
                     <ul>
-                        <li className='py-2 text-2xl '><Link to="/payments">전자 결제 서비스</Link></li>
-                        <li className='py-2 text-2xl '>부가 서비스</li>
-                        <li className='py-2 text-2xl '><Link to="/notices">공지사항</Link> / <Link to="/files">자료실</Link></li>
-                        <li className='py-2 text-2xl '><Link to="/faq">FAQ Form</Link></li>
+                        <li className='py-2 text-lg '><Link to="/payments">전자 결제 서비스</Link></li>
+                        <li className='py-2 text-lg '>부가 서비스</li>
+                        <li className='py-2 text-lg '><Link to="/notices">공지사항</Link> / <Link to="/files">자료실</Link></li>
+                        <li className='py-2 text-lg '><Link to="/faq">FAQ Form</Link></li>
                     </ul>
                 </div>
             </div>
             <div>
                 <h3 className='mx-8'>
-                    <span className='text-2xl'>(주) 페이투스</span>
+                    <span className='text-lg'>(주) 페이투스</span>
                     <br />
                     <br />
                     주소 : 서울시 금천구 가산디지털로 168, C동 701B호 <br />
@@ -50,18 +50,18 @@ const Footer = () => {
             </div>
         </div>
         <br /><hr className='max-w-[1240px] px-4 mx-aut'/><br />
-        <div className='lg:col-span-2 flex justify-between items-center my-6 px-4 mx-auto'>
-            <FaFacebookSquare size={30} />
-            <FaInstagram size={30} />
-            <FaTwitterSquare size={30} />
-            <FaGithubSquare size={30} />
-            <FaDribbbleSquare size={30} />
-        </div>
     </div>
   );
 };
 
 export default Footer;
+// <div className='lg:col-span-2 flex justify-between items-center my-6 px-4 mx-auto'>
+//     <FaFacebookSquare size={30} />
+//     <FaInstagram size={30} />
+//     <FaTwitterSquare size={30} />
+//     <FaGithubSquare size={30} />
+//     <FaDribbbleSquare size={30} />
+// </div>
 
 
 

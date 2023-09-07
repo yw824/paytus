@@ -70,7 +70,7 @@ const NoticeComponent = () => {
                                          : 'mt-4 flex-col mx-auto grid md:grid-cols-6 gap-4 bg-[#BC614B] bg-opacity-70 text-center py-3 px-3 font-bold'
                                      }
                                  key={notice.noticeseq}>
-                                <p className='col-1 my-auto'>{index}/[{notice.noticeseq}]</p>
+                                <p className='col-1 my-auto'>{index}</p>
                                 <p className='col-2 my-auto'>{notice.adminid}</p>
                                 <button className='col-start-3 col-end-5 my-auto hover:scale-105 duration-300' onClick={() => showModal(notice.noticeseq)}>{notice.noticetitle}</button>
                                 <p className='col-5 my-auto'>{notice.noticedate.slice(0, 10)}</p>

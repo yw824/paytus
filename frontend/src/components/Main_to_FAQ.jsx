@@ -10,15 +10,15 @@ const Main_to_FAQ = () => {
             backgroundImage: `url(${BackGround})`, width: 'fill', height:'100%', backgroundPosition: "center", backgroundRepeat: 'no-repeat', opacity: 0.7}}>
             <br />
             <Link to="/faq" target="_blank" className='hover:scale-105 duration-300 hover:text-[#D2302C] max-w-[1240px] mx-auto grid md:grid-cols-6 rounded-lg'>
-                <SlDocs size={100} className='col-start-3 col-end-4 place-items-center mx-auto my-auto text-black'/>
+                <SlDocs size={80} className='col-start-3 col-end-4 place-items-center mx-auto my-auto text-black'/>
 
                 <div className='w-full flex flex-col justify-center col-start-4 col-end-5'>
                     <p className=' font-bold'></p>
-                    <h1 className='md:text-4xl text-[#D2302C] sm:text-3xl text-2xl mx-auto my-auto font-bold py-2 '>문의 게시판</h1>
-                    <p className='text-black text-center mt-4 mb-4 w-fit-to-content font-bold text-2xl'>
+                    <h1 className='md:text-3xl text-[#D2302C] sm:text-3xl text-2xl mx-auto my-auto font-bold py-2 '>문의 게시판</h1>
+                    <p className='text-black text-center mt-4 mb-4 w-fit-to-content font-bold text-xl'>
                         궁금하신 사항을 빠르고 <br />정확하게 전달해 드립니다.
                     </p>
-                    <button className=' w-[200px] rounded-md text-2xl font-bold my-6 mx-auto py-3 bg-[#F1511F] text-white'>문의하기</button>
+                    <button className=' w-[200px] rounded-md text-xl font-bold my-6 mx-auto py-3 bg-[#F1511F] text-white'>문의하기</button>
                 </div>
             </Link>
         </div>

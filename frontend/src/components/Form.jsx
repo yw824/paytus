@@ -22,7 +22,7 @@ const Form = () => {
         console.log(data);
         axios.post("/api/faq", data)
             .then((response) => {
-                alert("completed!!!");
+                alert("요청하신 문의가 등록되었습니다.");
                 window.location.replace('/faq');
             }).catch(function (error) {
                 alert(error);
@@ -30,9 +30,9 @@ const Form = () => {
     };
 
     return (
-        <div className='max-w-[1240px] mx-auto px-2 flex flex-col'>
-            <form className='border-gray-300 flex flex-col shadow-sm max-w-[1240px] my-auto mx-auto bg-white whitespace-nowrap h-fit' method='post' onSubmit={handleSubmit}>
-                <h1 className='mt-4 font-bold'>유형 선택 <span className='text-[rgb(241,81,31)]'>*</span></h1>
+        <div className='max-w-[1240px] mx-auto py-16 px-4 bg-white'>
+            <form className='border-gray-300 flex flex-col shadow-sm my-auto whitespace-nowrap h-fit' method='post' onSubmit={handleSubmit}>
+                <h1 className='mt-4 font-bold'>유형 선택 <span className='text-[#F1511F]'>*</span></h1>
                 <select className='w-full flex flex-col py-2 px-2 rounded-md bg-white border-2 my-2 object-fill max-w-[1240px] mx-auto font-bold whitespace-nowrap h-fit' type='text' name='faqarea' onChange={handleChange} value={data.type}>
                     <option value="etc">신고/기타</option>
                     <option value="payment">결제 서비스</option>
@@ -53,21 +53,19 @@ const Form = () => {
                 </div>
                 <h1 className='mt-4 font-bold'>이메일 <span className='text-[#F1511F]'>*</span></h1>
                 <input className='w-full py-2 px-2 rounded-md bg-white border-2' type="email" name='faqemail' id='faqemail' onChange={handleChange} value={data.faqemail} placeholder='이메일을 입력해 주세요'/>
-                <h1 className='mt-4 font-boldp'>문의 내용 <span className='text-[#F1511F]'>*(최대 2000자)</span></h1>
-                        <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name='faqtext' id='faqtext' cols='30' onChange={handleChange} value={data.faqtext} rows='10' placeholder='문의사항을 입력해 주세요(최대 1000자)'></textarea>
-                        <div className='my-8 max-w-[1240px] grid md:grid-cols-7 gap-4'>
-                            <div className='col-start-2 col-end-5'>
-                                <div className='mx-auto grid md:grid-cols-5 ga-4'>
-                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqterm" onChange={handleChange}>개인정보 제공 및 활용 동의(필수)</label>
-                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqterm' id='faqterm' onChange={handleChange}/>
-                        </div>
-                        <br />
+                <h1 className='mt-4 font-bold'>문의 내용 <span className='text-[#F1511F]'>*(최대 1000자)</span></h1>
+                <textarea className='w-full py-2 px-2 rounded-md bg-white border-2' name='faqtext' id='faqtext' cols='30' onChange={handleChange} value={data.faqtext} rows='10' placeholder='문의사항을 입력해 주세요(최대 1000자)'></textarea>
+                <div className='my-8 grid md:grid-cols-7 gap-4'>
+                    <div className='col-start-2 col-end-4'>
                         <div className='mx-auto grid md:grid-cols-5 gap-4'>
-                            <label className='text-l font-bold mx-auto my-auto col-start-1 col-end-3' for="faqisnew" onChange={handleChange}>페이투스 서비스 사용 중입니까?</label>
+                            <label className='font-bold mx-auto my-auto col-start-1 col-end-3' for="faqterm" onChange={handleChange}>개인정보 제공 및 활용 동의(필수)</label>
+                            <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqterm' id='faqterm' onChange={handleChange}/>
+                            <br />
+                            <label className='font-bold mx-auto my-auto col-start-1 col-end-3' for="faqisnew" onChange={handleChange}>페이투스 서비스 사용 중입니까?</label>
                             <input className='col-start-5 whitespace-nowrap' type='checkbox' name='faqisnew' id='faqisnew' onChange={handleChange}/>
                         </div>
                     </div>
-                    <button className='w-full h-full px-3 py-3 col-start-5 col-end-6 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>
+                    <button className='hover:scale-105 duration-300 w-full h-full px-3 py-3 col-4 my-auto mx-auto text-center bg-[#F1511F] rounded-md font-bold text-white text-xl' type='submit' onSubmit={handleSubmit}>SEND</button>
                 </div>
             </form>
         </div>
@@ -75,3 +73,5 @@ const Form = () => {
 };
 
 export default Form;
+// max-w-[1240px] mx-auto flex flex-col px-4 items-center whitespace-nowrap h-fit
+// <div className='mx-auto grid md:grid-cols-5 gap-4'>
